@@ -76,7 +76,7 @@ def AnalysisPeriod():
     endTime = st.session_state['end_time']
     endTime = st.text_input("End Time", endTime)
 
-    isAnalysis = st.button("주문하기")
+    isAnalysis = st.button("분석 주문하기")
 
     if isAnalysis:
         st.write(
