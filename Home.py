@@ -62,7 +62,7 @@ def AnalysisPeriod():
     StartDate = st.date_input("Start Date", startDate)
 
     if 'end_date' not in st.session_state:
-        st.session_state['end_date'] = datetime.date(datetime.datetime.now())
+        st.session_state['end_date'] = datetime.datetime.now().date()
     endDate = st.session_state['end_date']
     endDate = st.date_input("End Date", endDate)
 
