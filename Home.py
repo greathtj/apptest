@@ -1,32 +1,7 @@
 import streamlit as st
 import datetime
 import pandas as pd
-import pymysql
-
-class mysqlDB():
-
-    def connectDB(self, host, user, password, database):
-        self.myhost = host
-        self.myuser = user
-        self.mypassword = password
-        self.mydatabase = database
-        self.connection = pymysql.connect(host=self.myhost,
-                                          user=self.myuser,
-                                          password=self.mypassword,
-                                          database=self.mydatabase,
-                                          charset='utf8mb4',
-                                          cursorclass=pymysql.cursors.DictCursor)
-
-        return self.connection
-
-    def readBySQL(self, sql):
-        with self.connection.cursor() as cursor:
-            # Read table list
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            
-        return result
-
+import customLib as cl
 
 st.set_page_config(
     page_title="Elevator IoT",
@@ -46,7 +21,7 @@ st.markdown(
 
 st.header("메뉴판")
 topicA = st.selectbox("Elevator number",
-                              ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
+                      ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
 topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
 TopicT = topicA + "/" + topicB
 
@@ -69,12 +44,8 @@ if isImporting:
     sql += "order by timestamp asc;"
     st.write(sql)
 
-    thisDB = mysqlDB()
-    thisDB.connectDB(
-        host='dkswiot.iptime.org',
-        user='dksw',
-        password='dksw31512',
-        database='dkswiotDB')
+    thisDB = cl.mysqlDB()
+    thisDB.connectDB(database='dkswiotDB')
     thisResult = pd.DataFrame(thisDB.readBySQL(sql))
     st.write(thisResult)
     st.line_chart(thisResult.rename(columns={'timestamp':'index', 'data':TopicT}).set_index('index'))
