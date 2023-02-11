@@ -59,6 +59,11 @@ isImporting = st.button("주문하기")
 
 
 if isImporting:
+    st.write(
+        """신선한 데이터를 제공하고자 주문과 함께 작업에 들어가므로, 나오기까지 다소 시간이 걸릴 수 있습니다.
+        이해해주셔서 감사합니다."""
+    )
+    
     sql = "select timestamp, data from elevatortb "
     sql += "where topic = '{}' and DATE(timestamp) = DATE('{}') ".format(TopicT, seldate)
     sql += "order by timestamp asc;"
