@@ -2,10 +2,10 @@ import pymysql
 
 class mysqlDB():
 
-    def connectDB(self, database):
-        self.myhost = "dkswiot.iptime.org"
-        self.myuser = "dksw"
-        self.mypassword = "dksw31512"
+    def connectDB(self, host, database, user, password):
+        self.myhost = host
+        self.myuser = user
+        self.mypassword = password
         self.mydatabase = database
         self.connection = pymysql.connect(host=self.myhost,
                                           user=self.myuser,

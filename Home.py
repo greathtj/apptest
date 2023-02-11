@@ -44,7 +44,12 @@ if isImporting:
     st.write(sql)
 
     thisDB = cl.mysqlDB()
-    thisDB.connectDB(database='dkswiotDB')
+    thisDB.connectDB(
+        host=st.secrets["DB_Address"],
+        database='dkswiotDB',
+        user=st.secrets["DB_UserName"],
+        password=st.secrets["DB_PassWord"]
+    )
     thisResult = pd.DataFrame(thisDB.readBySQL(sql))
     st.write(thisResult)
     st.line_chart(thisResult.rename(columns={'timestamp':'index', 'data':TopicT}).set_index('index'))
