@@ -46,7 +46,7 @@ seldate = st.sidebar.date_input("Date", seldate)
 
 isImporting = st.sidebar.button("화면에 표시")
 
-st.write("# 엘리베이터 IoT 👋")
+st.write("# 엘리베이터 IoT - New 👋")
 
 
 st.markdown(
