@@ -105,11 +105,11 @@ def AnalysisPeriod():
 
         if len(thisResult) > 0:
             st.write(thisResult)
-            st.subheader("1. 평균값")
-            st.line_chart(thisResult.rename(columns={'dates':'index', 'average':TopicT}).set_index('index'))
+            st.subheader("1. 평균값 / 표준편차")
+            st.line_chart(thisResult.rename(columns={'dates':'index', 'average':'평균', 'std':'표준편차'}).set_index('index'))
 
-            st.subheader("2. 표준편차")
-            st.line_chart(thisResult.rename(columns={'dates':'index', 'std':TopicT}).set_index('index'))
+            # st.subheader("2. 표준편차")
+            # st.line_chart(thisResult.rename(columns={'dates':'index', 'std':TopicT}).set_index('index'))
 
             st.write(
                 """
