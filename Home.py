@@ -66,6 +66,16 @@ def AnalysisPeriod():
     endDate = st.session_state['end_date']
     endDate = st.date_input("End Date", endDate)
 
+    if 'start_time' not in st.session_state:
+        st.session_state['start_time'] = "09:00:00"
+    startTime = st.session_state['start_time']
+    startTime = st.date_input("Start Time", startTime)
+
+    if 'end_time' not in st.session_state:
+        st.session_state['end_time'] = "17:59:59"
+    endTime = st.session_state['end_time']
+    endTime = st.date_input("End Time", endTime)
+
 
 st.set_page_config(
     page_title="Elevator IoT",
