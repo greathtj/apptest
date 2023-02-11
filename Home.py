@@ -46,7 +46,7 @@ if isImporting:
     thisDB = cl.mysqlDB()
     thisDB.connectDB(
         host=st.secrets["DB_Address"],
-        database='dkswiotDB',
+        database=st.secrets["DB_Name"],
         user=st.secrets["DB_UserName"],
         password=st.secrets["DB_PassWord"]
     )
