@@ -34,7 +34,7 @@ st.set_page_config(
 )
 
 
-st.write("# 엘리베이터 IoT - New 👋")
+st.write("# 엘리베이터 IoT - 맛집 👋")
 
 st.markdown(
     """
