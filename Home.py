@@ -44,7 +44,7 @@ st.markdown(
 )
 
 
-# st.sidebar.header("DB에서 데이터를 가져오기.")
+st.header("메뉴판")
 topicA = st.selectbox("Elevator number",
                               ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
 topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
@@ -55,7 +55,7 @@ if 'selected_date' not in st.session_state:
 seldate = st.session_state['selected_date']
 seldate = st.date_input("Date", seldate)
 
-isImporting = st.button("화면에 표시")
+isImporting = st.button("주문하기")
 
 
 if isImporting:
