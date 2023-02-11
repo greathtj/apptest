@@ -76,6 +76,46 @@ def AnalysisPeriod():
     endTime = st.session_state['end_time']
     endTime = st.text_input("End Time", endTime)
 
+    isAnalysis = st.button("주문하기")
+
+    if isAnalysis:
+        st.write(
+            """신선한 데이터를 뿐만 아니라, 많은 데이터를 처리해야 합니다. 시간이 더 걸릴 수 있습니다."""
+        )
+        st.write(
+            """이해해주셔서 감사합니다. <바삐 일하는 종업원>"""
+        )
+
+        sql = """
+            SELECT DATE(timestamp) as dates, AVG(data) as average 
+            FROM elevatortb
+            WHERE HOUR(`timestamp`) BETWEEN 9 AND 10 
+            AND topic = "Elevator001/decibel"
+            GROUP BY DATE(`timestamp`);
+        """
+
+        st.write(sql)
+
+        thisDB = cl.mysqlDB()
+        thisDB.connectDB(
+            host=st.secrets["DB_Address"],
+            database=st.secrets["DB_Name"],
+            user=st.secrets["DB_UserName"],
+            password=st.secrets["DB_PassWord"]
+        )
+        thisResult = pd.DataFrame(thisDB.readBySQL(sql))
+
+        if len(thisResult) > 0:
+            st.write(thisResult)
+            st.line_chart(thisResult.rename(columns={'dates':'index', 'average':TopicT}).set_index('index'))
+
+            st.write(
+                """
+                Here they are... Enjoy your data... We are very happy to be of your service...
+                """
+            )
+        else:
+            st.write("Sorry, but No data...")
 
 st.set_page_config(
     page_title="Elevator IoT",
