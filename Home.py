@@ -20,6 +20,19 @@ st.markdown(
 
 
 st.header("메뉴판")
+
+tab1, tab2, tab3 = st.tabs(["전체요리 - 일별데이터", "메인요리 - 평균, 분산 등", "후식 - 아노말리"])
+
+with tab1:
+   st.header("전체요리 - 일별데이터")
+
+with tab2:
+   st.header("메인요리 - 평균, 분산 등")
+
+with tab3:
+   st.header("후식 - 아노말리")
+
+
 topicA = st.selectbox("Elevator number",
                       ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
 topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
