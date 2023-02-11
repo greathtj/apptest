@@ -39,7 +39,7 @@ st.write("# 엘리베이터 IoT - New 👋")
 st.markdown(
     """
     엘리베이터 IoT 시스템의 일련의 프로그램을 사용할 수 있습니다.
-    **👈 사이드바에 있는 기능을 선택하세요.** 필요한 기능들을 이용할 수 있습니다.
+    **아래 메뉴판에 있는 기능을 취항껏 주문해주세요.** 필요한 기능들을 이용할 수 있습니다.
 """
 )
 
@@ -63,7 +63,7 @@ if isImporting:
         """신선한 데이터를 제공하고자 주문과 함께 작업에 들어가므로, 나오기까지 다소 시간이 걸릴 수 있습니다.
         이해해주셔서 감사합니다."""
     )
-    
+
     sql = "select timestamp, data from elevatortb "
     sql += "where topic = '{}' and DATE(timestamp) = DATE('{}') ".format(TopicT, seldate)
     sql += "order by timestamp asc;"
