@@ -86,7 +86,7 @@ def AnalysisPeriod():
             """이해해주셔서 감사합니다. <바삐 일하는 종업원>"""
         )
 
-        sql = "SELECT DATE(timestamp) as dates, AVG(data) as average "
+        sql = "SELECT DATE(timestamp) as dates, AVG(data) as average, STDDEV(data) as std "
         sql += "FROM elevatortb "
         sql += "WHERE HOUR(`timestamp`) BETWEEN 9 AND 10 "
         sql += "AND topic = '" + TopicT + "' "
@@ -107,6 +107,9 @@ def AnalysisPeriod():
             st.write(thisResult)
             st.subheader("1. 평균값")
             st.line_chart(thisResult.rename(columns={'dates':'index', 'average':TopicT}).set_index('index'))
+
+            st.subheader("2. 표준편차")
+            st.line_chart(thisResult.rename(columns={'dates':'index', 'std':TopicT}).set_index('index'))
 
             st.write(
                 """
