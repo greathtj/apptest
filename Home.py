@@ -136,14 +136,14 @@ st.markdown(
 
 st.header("메뉴판")
 
-tab1, tab2, tab3 = st.tabs(["전체요리 - 일별데이터", "메인요리 - 평균, 분산 등", "후식 - 아노말리"])
+tab1, tab2, tab3 = st.tabs(["전체요리 - 일별데이터", "메인요리 - 평균 등", "후식 - 아노말리"])
 
 with tab1:
    st.header("전체요리 - 일별데이터")
    dailyInfo()
 
 with tab2:
-   st.header("메인요리 - 평균, 분산 등")
+   st.header("메인요리 - 평균 등")
    AnalysisPeriod()
 
 with tab3:
