@@ -105,6 +105,7 @@ def AnalysisPeriod():
 
         if len(thisResult) > 0:
             st.write(thisResult)
+            st.header("### 평균값")
             st.line_chart(thisResult.rename(columns={'dates':'index', 'average':TopicT}).set_index('index'))
 
             st.write(
