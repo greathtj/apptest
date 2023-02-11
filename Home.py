@@ -50,6 +50,11 @@ def dailyInfo():
         else:
             st.write("Sorry, but No data...")
 
+def AnalysisPeriod():
+    topicA = st.selectbox("Elevator number",
+                        ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
+    topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
+    TopicT = topicA + "/" + topicB
 
 st.set_page_config(
     page_title="Elevator IoT",
@@ -76,6 +81,7 @@ with tab1:
 
 with tab2:
    st.header("메인요리 - 평균, 분산 등")
+   AnalysisPeriod()
 
 with tab3:
    st.header("후식 - 아노말리")
