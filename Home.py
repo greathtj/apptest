@@ -4,9 +4,9 @@ import pandas as pd
 import customLib as cl
 
 def dailyInfo():
-    topicA = st.selectbox("Elevator number",
+    topicA = st.selectbox("Elevator number - day",
                         ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
-    topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
+    topicB = st.selectbox("Sensor - day",("decibel", "Xmax", "Ymax", "Zmax"))
     TopicT = topicA + "/" + topicB
 
     if 'selected_date' not in st.session_state:
@@ -51,10 +51,21 @@ def dailyInfo():
             st.write("Sorry, but No data...")
 
 def AnalysisPeriod():
-    topicA = st.selectbox("Elevator number",
+    topicA = st.selectbox("Elevator number - analysis",
                         ("Elevator001", "Elevator002", "Elevator003", "Elevator004", "Elevator005", "Elevator006", "Elevator007", "Elevator008"))
-    topicB = st.selectbox("Sensor",("decibel", "Xmax", "Ymax", "Zmax"))
+    topicB = st.selectbox("Sensor - analysis",("decibel", "Xmax", "Ymax", "Zmax"))
     TopicT = topicA + "/" + topicB
+
+    if 'start_date' not in st.session_state:
+        st.session_state['start_date'] = datetime.date(2022,9,1)
+    startDate = st.session_state['start_date']
+    StartDate = st.date_input("Start Date", startDate)
+
+    if 'end_date' not in st.session_state:
+        st.session_state['end_date'] = datetime.date(datetime.datetime.now())
+    endDate = st.session_state['end_date']
+    endDate = st.date_input("End Date", endDate)
+
 
 st.set_page_config(
     page_title="Elevator IoT",
