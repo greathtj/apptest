@@ -51,11 +51,15 @@ if isImporting:
         password=st.secrets["DB_PassWord"]
     )
     thisResult = pd.DataFrame(thisDB.readBySQL(sql))
-    st.write(thisResult)
-    st.line_chart(thisResult.rename(columns={'timestamp':'index', 'data':TopicT}).set_index('index'))
 
-    st.write(
-        """
-        Here they are... Enjoy your data... We are very happy to be of your service...
-        """
-    )
+    if len(thisResult) > 0:
+        st.write(thisResult)
+        st.line_chart(thisResult.rename(columns={'timestamp':'index', 'data':TopicT}).set_index('index'))
+
+        st.write(
+            """
+            Here they are... Enjoy your data... We are very happy to be of your service...
+            """
+        )
+    else:
+        st.write("Sorry, but No data...")
