@@ -69,12 +69,12 @@ def AnalysisPeriod():
     if 'start_time' not in st.session_state:
         st.session_state['start_time'] = "09:00:00"
     startTime = st.session_state['start_time']
-    startTime = st.date_input("Start Time", startTime)
+    startTime = st.text_input("Start Time", startTime)
 
     if 'end_time' not in st.session_state:
         st.session_state['end_time'] = "17:59:59"
     endTime = st.session_state['end_time']
-    endTime = st.date_input("End Time", endTime)
+    endTime = st.text_input("End Time", endTime)
 
 
 st.set_page_config(
