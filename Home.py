@@ -86,13 +86,11 @@ def AnalysisPeriod():
             """이해해주셔서 감사합니다. <바삐 일하는 종업원>"""
         )
 
-        sql = """
-            SELECT DATE(timestamp) as dates, AVG(data) as average 
-            FROM elevatortb
-            WHERE HOUR(`timestamp`) BETWEEN 9 AND 10 
-            AND topic = "Elevator001/decibel"
-            GROUP BY DATE(`timestamp`);
-        """
+        sql = "SELECT DATE(timestamp) as dates, AVG(data) as average "
+        sql += "FROM elevatortb "
+        sql += "WHERE HOUR(`timestamp`) BETWEEN 9 AND 10 "
+        sql += "AND topic = '" + TopicT + "' "
+        sql += "GROUP BY DATE(`timestamp`);"
 
         st.write(sql)
 
