@@ -6,3 +6,5 @@ st.set_page_config(
 )
 
 st.title("Vision Inspection 🎥")
+
+st.write("test")
