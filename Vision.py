@@ -13,7 +13,7 @@ task_list = ["Video Stream"]
 with st.sidebar:
     st.title('Task Selection')
     task_name = st.selectbox("Select your tasks:", task_list)
-st.title(task_name)
+st.title(task_name + "Test")
 
 if task_name == task_list[0]:
     style_list = ['color', 'black and white']
