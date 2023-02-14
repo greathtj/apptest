@@ -1,5 +1,8 @@
 import streamlit as st
 
-st.title("Vision Inspection")
+st.set_page_config(
+    page_title="Vision Inspec.",
+    page_icon="🎥",
+)
 
-st.header("Vision Inspection")
+st.title("Vision Inspection 🎥")
