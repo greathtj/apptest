@@ -49,6 +49,8 @@ if task_name == task_list[0]:
             "audio": False
         }
     )
+    
+    st.button("촬영")
 
     if ctx.video_processor:
         ctx.video_transformer.update_style(style_selection)
