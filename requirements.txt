@@ -3,6 +3,5 @@ streamlit_webrtc
 pandas
 pymysql
 opencv-python-headless==4.5.4.60
-PIL
 numpy
 mediapipe==0.8.9.1
