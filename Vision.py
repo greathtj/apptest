@@ -36,7 +36,6 @@ if task_name == task_list[0]:
             global isCapture
             
             if isCapture:
-                st.write("picture taking...")
                 simg = frame.to_ndarray(format="bgr24")
                 cv2.imwrite("photos/test.jpg", simg)
             img = frame.to_image()
