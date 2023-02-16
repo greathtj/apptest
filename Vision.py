@@ -33,7 +33,11 @@ if task_name == task_list[0]:
                     self.style = new_style
 
         def recv(self, frame):
-            # img = frame.to_ndarray(format="bgr24")
+            global isCapture
+            
+            if isCapture:
+                simg = frame.to_ndarray(format="bgr24")
+                cv2.imwrite("photos/test.jpg", simg)
             img = frame.to_image()
             if self.style == style_list[1]:
                 img = img.convert("L")
@@ -51,7 +55,7 @@ if task_name == task_list[0]:
         }
     )
     
-    st.button("촬영")
+    isCapture = st.button("촬영")
 
     if ctx.video_processor:
         ctx.video_transformer.update_style(style_selection)
