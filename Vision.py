@@ -11,7 +11,7 @@ st.set_page_config(page_title="Streamlit WebRTC Demo", page_icon="🤖")
 task_list = ["Video Stream"]
 
 isCapture = True
-saveImg = None
+saveImg = []
 
 with st.sidebar:
     st.title('Task Selection')
