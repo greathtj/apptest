@@ -38,6 +38,7 @@ if task_name == task_list[0]:
             
             if isCapture:
                 simg = frame.to_ndarray(format="bgr24")
+                st.write("captured...")
                 isCapture = False
             img = frame.to_image()
             if self.style == style_list[1]:
