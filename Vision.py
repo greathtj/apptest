@@ -11,11 +11,13 @@ st.set_page_config(page_title="Streamlit WebRTC Demo", page_icon="🤖")
 task_list = ["Video Stream"]
 
 isCapture = True
+saveImg = None
 
 with st.sidebar:
     st.title('Task Selection')
     task_name = st.selectbox("Select your tasks:", task_list)
 st.title(task_name)
+isCapture = st.button("촬영")
 
 if task_name == task_list[0]:
     style_list = ['color', 'black and white']
@@ -34,11 +36,10 @@ if task_name == task_list[0]:
                     self.style = new_style
 
         def recv(self, frame):
-            global isCapture
+            global isCapture, saveImg
             
             if isCapture:
-                simg = frame.to_ndarray(format="bgr24")
-                st.write("captured...")
+                saveImg = frame.to_ndarray(format="bgr24")
                 isCapture = False
             img = frame.to_image()
             if self.style == style_list[1]:
@@ -57,7 +58,5 @@ if task_name == task_list[0]:
         }
     )
     
-    isCapture = st.button("촬영")
-
     if ctx.video_processor:
         ctx.video_transformer.update_style(style_selection)
