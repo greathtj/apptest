@@ -10,14 +10,10 @@ RTC_CONFIGURATION = RTCConfiguration(
 st.set_page_config(page_title="Streamlit WebRTC Demo", page_icon="🤖")
 task_list = ["Video Stream"]
 
-isCapture = True
-saveImg = []
-
 with st.sidebar:
     st.title('Task Selection')
     task_name = st.selectbox("Select your tasks:", task_list)
 st.title(task_name)
-isCapture = st.button("촬영")
 
 if task_name == task_list[0]:
     style_list = ['color', 'black and white']
@@ -29,6 +25,7 @@ if task_name == task_list[0]:
         def __init__(self):
             self.model_lock = threading.Lock()
             self.style = style_list[0]
+            self.isCapture = st.button("촬영")
 
         def update_style(self, new_style):
             if self.style != new_style:
@@ -36,11 +33,9 @@ if task_name == task_list[0]:
                     self.style = new_style
 
         def recv(self, frame):
-            global isCapture, saveImg
-            
-            if isCapture:
+            if self.isCapture:
                 saveImg = frame.to_ndarray(format="bgr24")
-                isCapture = False
+                self.isCapture = False
             img = frame.to_image()
             if self.style == style_list[1]:
                 img = img.convert("L")
@@ -60,5 +55,3 @@ if task_name == task_list[0]:
     
     if ctx.video_processor:
         ctx.video_transformer.update_style(style_selection)
-
-st.write(len(saveImg))
