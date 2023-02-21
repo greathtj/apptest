@@ -2,7 +2,6 @@ import streamlit as st
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, RTCConfiguration
 import av
 import threading
-import cv2
 
 RTC_CONFIGURATION = RTCConfiguration(
     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
@@ -39,7 +38,6 @@ if task_name == task_list[0]:
             
             if isCapture:
                 simg = frame.to_ndarray(format="bgr24")
-                cv2.imwrite("photos/test.jpg", simg)
                 isCapture = False
             img = frame.to_image()
             if self.style == style_list[1]:
