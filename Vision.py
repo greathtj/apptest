@@ -11,6 +11,8 @@ RTC_CONFIGURATION = RTCConfiguration(
 st.set_page_config(page_title="Streamlit WebRTC Demo", page_icon="🤖")
 task_list = ["Video Stream"]
 
+isCapture = True
+
 with st.sidebar:
     st.title('Task Selection')
     task_name = st.selectbox("Select your tasks:", task_list)
@@ -33,11 +35,12 @@ if task_name == task_list[0]:
                     self.style = new_style
 
         def recv(self, frame):
-            # global isCapture
+            global isCapture
             
-            # if isCapture:
-            #     simg = frame.to_ndarray(format="bgr24")
-            #     cv2.imwrite("photos/test.jpg", simg)
+            if isCapture:
+                simg = frame.to_ndarray(format="bgr24")
+                cv2.imwrite("photos/test.jpg", simg)
+                isCapture = False
             img = frame.to_image()
             if self.style == style_list[1]:
                 img = img.convert("L")
