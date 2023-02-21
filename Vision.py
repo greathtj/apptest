@@ -19,6 +19,8 @@ with st.sidebar:
 st.title(task_name)
 isCapture = st.button("촬영")
 
+st.write(len(saveImg))
+
 if task_name == task_list[0]:
     style_list = ['color', 'black and white']
 
