@@ -1,20 +1,14 @@
 import streamlit as st
 import pandas as pd
-import cv2
 from PIL import Image, ImageEnhance
 import numpy as np
 import os
-#import tensorflow as tf
-#import tensorflow_hub as hub
 import time ,sys
 from streamlit_embedcode import github_gist
 import urllib.request
 import urllib
 import moviepy.editor as moviepy
 import cv2
-import numpy as np
-import time
-import sys
 
 def main():
     new_title = '<p style="font-size: 42px;">Welcome to my Object Detection App!</p>'
