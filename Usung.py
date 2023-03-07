@@ -49,7 +49,7 @@ def showDailyInfo():
         st.session_state['view_end'] = viewEnd        
 
     if 'view_start' not in st.session_state:
-        st.session_state['view_start'] = datetime.datetime.now().date()
+        st.session_state['view_start'] = datetime.datetime.now().date() - datetime.timedelta(days=30)
     viewStart = st.session_state['view_start']
     thisVS = st.date_input("조회 시작일", viewStart)
     if thisVS:
